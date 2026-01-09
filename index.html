@@ -23,6 +23,7 @@
       --border-light: #e2e8f0;
       --shadow: 0 10px 40px rgba(0,0,0,0.08);
       --radius: 16px;
+      --header-height: 70px;
     }
 
     * {
@@ -37,6 +38,7 @@
       color: var(--text-dark);
       line-height: 1.7;
       overflow-x: hidden;
+      padding-top: var(--header-height); /* <= Offsets for fixed header */
     }
 
     a {
@@ -55,6 +57,7 @@
       backdrop-filter: blur(20px);
       z-index: 1000;
       padding: 1rem 0;
+      min-height: var(--header-height);
       box-shadow: 0 2px 20px rgba(0,0,0,0.05);
     }
 
@@ -76,11 +79,23 @@
       background-clip: text;
     }
 
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
     nav a {
-      margin-left: 2rem;
       color: var(--text-muted);
       font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 1rem;
       position: relative;
+      padding: 0.3rem 0.6rem;
+      transition: color 0.2s;
     }
 
     nav a:hover {
@@ -104,62 +119,56 @@
 
     /* HERO */
     .hero {
-  min-height: 100vh;
-  padding: 0 2rem;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background: #ffffff;
-  overflow: hidden;
-}
+      min-height: 100vh;
+      padding: 0 2rem;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: #ffffff;
+      overflow: hidden;
+    }
 
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url("Hero.jpg");
+      background-size: cover;
+      background-position: center;
+      z-index: 1;
+    }
 
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background-image: url("Hero.jpg");
-  background-size: cover;
-  background-position: center;
-  z-index: 1;
-}
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        rgba(0, 0, 0, 0.35),
+        rgba(0, 0, 0, 0.45)
+      );
+      z-index: 2;
+    }
 
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    rgba(0, 0, 0, 0.35),
-    rgba(0, 0, 0, 0.45)
-  );
-  z-index: 2;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 3;
-  max-width: 800px;
-  animation: fadeInUp 1.2s ease-out;
-}
-
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 800px;
+      animation: fadeInUp 1.2s ease-out;
+    }
 
     .hero h1 {
-  font-size: clamp(3rem, 8vw, 5rem);
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  color: #ffffff;
-   }
-   .hero h1 {
-     text-shadow: 0 10px 40px rgba(0,0,0,0.3);
-   }
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: #ffffff;
+      text-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    }
 
-
-.hero-subtitle {
-  font-size: 1.5rem;
-  color: rgba(255,255,255,0.9);
-  margin-bottom: 2rem;
-}
-
+    .hero-subtitle {
+      font-size: 1.5rem;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 2rem;
+    }
 
     .hero-buttons {
       display: flex;
@@ -338,169 +347,159 @@
       line-height: 1.8;
     }
 
-/* FOOTER */
-footer {
-  background: #0f766e;
-  color: #e0f2f1;
-  padding: 2.5rem 0 2rem;
-  margin-top: 4rem;
-}
+    /* --- FOOTER --- */
+    footer {
+      background: #0f766e;
+      color: #e0f2f1;
+      padding: 2.5rem 0 2rem;
+      margin-top: 4rem;
+    }
 
-.footer-content {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 1.5rem 2rem;
-  background: #115e59;
-  border-radius: 18px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 1.5rem;
-  align-items: flex-start;
-}
+    .footer-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem;
+      background: #115e59;
+      border-radius: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1.5rem;
+      align-items: stretch;
+    }
 
-.footer-section {
-  flex: 1 1 200px;
-}
+    .footer-section {
+      flex: 1 1 200px;
+      min-width: 0;
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      text-align: left;
+      padding: 0.5rem 0;
+    }
 
-.footer-section h3 {
-  color: #ecfeff;
-  margin-bottom: 0.75rem;
-  font-size: 1rem;
-}
+    .footer-section h3 {
+      color: #ecfeff;
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+    }
 
-.footer-section p {
-  margin: 0.25rem 0;
-}
+    .footer-section a, .footer-section p {
+      margin: 0.25rem 0;
+      word-break: break-word;
+    }
 
-.footer-section a {
-  color: #a5f3fc;
-  display: block;
-  margin-bottom: 0.25rem;
-}
+    .footer-section a {
+      color: #a5f3fc;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+    .footer-section a:hover {
+      color: #ffffff;
+    }
 
-.footer-section a:hover {
-  color: #ffffff;
-}
+    footer .copyright {
+      max-width: 900px;
+      margin: 1.5rem auto 0;
+      text-align: center;
+      border-top: 1px solid #0d4f4a;
+      padding-top: 0.75rem;
+      color: #ccfbf1;
+      font-size: 0.85rem;
+    }
 
-footer .copyright {
-  max-width: 900px;
-  margin: 1.5rem auto 0;
-  text-align: center;
-  border-top: 1px solid #0d4f4a;
-  padding-top: 0.75rem;
-  color: #ccfbf1;
-  font-size: 0.85rem;
-}
+    /* ------------------------- RESPONSIVE -------------------------- */
+    @media (max-width: 768px) {
+      :root {
+        --header-height: 92px;
+      }
+      body {
+        padding-top: var(--header-height);
+      }
+      header {
+        padding: 0.7rem 0;
+      }
+      .nav-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 1rem;
+      }
+      .logo {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        text-align: center;
+      }
+      nav {
+        width: 100%;
+        justify-content: center;
+        gap: 0.6rem;
+      }
+      nav a {
+        padding: 0.38rem 0.7rem;
+        font-size: 1em;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      .btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+      }
+      .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      /* Footer: stack sections, center content, equal height */
+      .footer-content {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+        gap: 0.5rem;
+        padding: 1.2rem 0.5rem;
+      }
+      .footer-section {
+        align-items: center;
+        text-align: center;
+        min-height: 110px;
+        padding: 0.7rem 0;
+        justify-content: center;
+      }
+      .footer-section h3 {
+        margin-bottom: 0.5rem;
+        font-size: 1.07rem;
+      }
+      .footer-section a, .footer-section p {
+        margin: 0.15rem 0;
+        word-break: break-word;
+      }
+    }
 
-/* --- FOOTER Mobile --- */
-footer {
-  background: #0f766e;
-  color: #e0f2f1;
-  padding: 2.5rem 0 2rem;
-  margin-top: 4rem;
-}
+    /* ANIMATIONS */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-.footer-content {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 1.5rem 2rem;
-  background: #115e59;
-  border-radius: 18px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 1.5rem;
-  align-items: stretch;
-}
-
-.footer-section {
-  flex: 1 1 200px;
-  min-width: 0;
-  min-height: 120px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  text-align: left;
-  padding: 0.5rem 0;
-}
-
-.footer-section h3 {
-  color: #ecfeff;
-  margin-bottom: 0.75rem;
-  font-size: 1rem;
-}
-
-.footer-section a, .footer-section p {
-  margin: 0.25rem 0;
-  word-break: break-word;
-}
-
-.footer-section a {
-  color: #a5f3fc;
-  display: block;
-  margin-bottom: 0.25rem;
-}
-.footer-section a:hover {
-  color: #ffffff;
-}
-
-footer .copyright {
-  max-width: 900px;
-  margin: 1.5rem auto 0;
-  text-align: center;
-  border-top: 1px solid #0d4f4a;
-  padding-top: 0.75rem;
-  color: #ccfbf1;
-  font-size: 0.85rem;
-}
-
-/* ------------------------- MOBILE (RESPONSIVE) --------------------------- */
-
-@media (max-width: 768px) {
-  /* Footer: stack sections, center content, equal height */
-  .footer-content {
-    flex-direction: column;
-    align-items: stretch;
-    text-align: center;
-    gap: 0.5rem;
-    padding: 1.5rem 0.5rem;
-  }
-  .footer-section {
-    align-items: center;
-    text-align: center;
-    min-height: 110px;
-    padding: 0.7rem 0;
-    justify-content: center;
-  }
-  .footer-section h3 {
-    margin-bottom: 0.5rem;
-    font-size: 1.07rem;
-  }
-  .footer-section a,
-  .footer-section p {
-    margin: 0.15rem 0;
-    word-break: break-word;
-  }
-}
-
-/* ANIMATIONS */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fade-in-up {
-  opacity: 0;
-  animation: fadeInUp 0.8s ease forwards;
-}
+    .fade-in-up {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+    }
   </style>
 </head>
 
@@ -520,23 +519,24 @@ footer .copyright {
 
   <!-- Hero Section -->
   <section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content fade-in-up">
-    <h1>Data Analyst & BI Specialist</h1>
-    <p class="hero-subtitle">I simplify complex data into clean, decision-ready insights using Python • Power BI • Tableau • SQL • Machine Learning</p>
-    <div class="hero-buttons">
-      <a href="#projects" class="btn btn-primary">
-        <i class="fas fa-eye"></i> View Projects
-      </a>
-      <a href="#contact" class="btn btn-secondary">
-        <i class="fas fa-download"></i> Download Resume
-      </a>
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content fade-in-up">
+      <h1>Data Analyst & BI Specialist</h1>
+      <p class="hero-subtitle">
+        I simplify complex data into clean, decision-ready insights using Python • Power BI • Tableau • SQL • Machine Learning
+      </p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn btn-primary">
+          <i class="fas fa-eye"></i> View Projects
+        </a>
+        <a href="#contact" class="btn btn-secondary">
+          <i class="fas fa-download"></i> Download Resume
+        </a>
+      </div>
     </div>
-  </div>
-</section>
-
-
+  </section>
+  
   <!-- Projects Section -->
   <section id="projects">
     <div class="container">
@@ -556,24 +556,19 @@ footer .copyright {
         </div>
 
         <div class="project-card fade-in-up">
-         <div class="project-icon">
-         <i class="fas fa-home"></i>
+          <div class="project-icon">
+            <i class="fas fa-home"></i>
+          </div>
+          <h3>Residential Real Estate Price Prediction</h3>
+          <div class="project-tech">
+            <i class="fas fa-code"></i>
+            SQL • Python • XGBoost • Regression • Power BI
+          </div>
+          <p>End-to-end real estate price analytics combining advanced regression models with interactive Power BI dashboards to assess pricing accuracy, risk exposure, and investment opportunity across property segments.</p>
+          <a href="https://akashrajhub.github.io/Residential-Real-Estate-Price-Prediction-Page/" class="btn btn-primary">View Case Study</a>
         </div>
-         <h3>Residential Real Estate Price Prediction</h3>
-       <div class="project-tech">
-         <i class="fas fa-code"></i>
-         SQL • Python • XGBoost • Regression • Power BI
-      </div>
-      <p>
-    End-to-end real estate price analytics combining advanced regression models
-    with interactive Power BI dashboards to assess pricing accuracy, risk exposure,
-    and investment opportunity across property segments.
-      </p>
-        <a href="https://akashrajhub.github.io/Residential-Real-Estate-Price-Prediction-Page/" class="btn btn-primary">View Case Study</a>
-      </div>
-
-    
-       <div class="project-card fade-in-up">
+        
+        <div class="project-card fade-in-up">
           <div class="project-icon">
             <i class="fas fa-users"></i>
           </div>
@@ -581,15 +576,11 @@ footer .copyright {
           <div class="project-tech">
             <i class="fas fa-code"></i>
             Python • Classification • ML • BI
-
           </div>
-          <p>End-to-end employee attrition analytics using classification models to identify
-high-risk employees, supported by interactive Power BI and Tableau dashboards
-for data-driven HR decision-making.
-</p>
+          <p>End-to-end employee attrition analytics using classification models to identify high-risk employees, supported by interactive Power BI and Tableau dashboards for data-driven HR decision-making.</p>
           <a href="https://akashrajhub.github.io/Hr-Attrition-Analytics-ML-BI-page/" class="btn btn-primary">View Case Study</a>
         </div>
-
+        
         <div class="project-card fade-in-up">
           <div class="project-icon">
             <i class="fas fa-shopping-cart"></i>
@@ -657,31 +648,31 @@ for data-driven HR decision-making.
     </div>
   </section>
 
-    <!-- Footer -->
+  <!-- Footer -->
   <footer id="contact">
-  <div class="footer-content">
-    <div class="footer-section">
-  <h3><i class="fas fa-envelope"></i> Get In Touch</h3>
-  <a href="mailto:akashraj.dev@outlook.com">akashraj.dev@outlook.com</a>
-  <a href="https://wa.me/918789388911" target="_blank">
-    <i class="fab fa-whatsapp"></i> WhatsApp: +91 87893 88911
-  </a>
-</div>
-    <div class="footer-section">
-      <h3><i class="fas fa-map-marker-alt"></i> Location</h3>
-      <p>Govindpuram, Ghaziabad, India </p>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3><i class="fas fa-envelope"></i> Get In Touch</h3>
+        <a href="mailto:akashraj.dev@outlook.com">akashraj.dev@outlook.com</a>
+        <a href="https://wa.me/918789388911" target="_blank">
+          <i class="fab fa-whatsapp"></i> WhatsApp: +91 87893 88911
+        </a>
+      </div>
+      <div class="footer-section">
+        <h3><i class="fas fa-map-marker-alt"></i> Location</h3>
+        <p>Govindpuram, Ghaziabad, India </p>
+      </div>
+      <div class="footer-section">
+        <h3><i class="fab fa-linkedin"></i> Connect</h3>
+        <a href="https://www.linkedin.com/in/akash-raj-profile/"target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/akashrajhub"target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
     </div>
-    <div class="footer-section">
-      <h3><i class="fab fa-linkedin"></i> Connect</h3>
-      <a href="https://www.linkedin.com/in/akash-raj-profile/"target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a href="https://github.com/akashrajhub"target="_blank" rel="noopener noreferrer">GitHub</a>
+    <div class="copyright">
+      © 2025 Akash Raj · Data Analyst Portfolio
     </div>
-  </div>
-  <div class="copyright">
-    © 2025 Akash Raj · Data Analyst Portfolio
-  </div>
-</footer>
-  
+  </footer>
+
   <script>
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -715,15 +706,3 @@ for data-driven HR decision-making.
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
