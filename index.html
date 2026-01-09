@@ -524,29 +524,38 @@ footer {
 }
 /* CONTACT MOBILE FIX - Paste here */
 @media (max-width: 768px) {
-  .get-in-touch, .contact-container { /* Match your contact class */
+  /* Force contact container to column, equal heights */
+  .get-in-touch, [class*="contact"], .footer-content, .contact-section {
+    display: flex !important;
     flex-direction: column !important;
-    padding: 15px;
+    align-items: center !important;
+    padding: 15px !important;
+    gap: 10px !important;
   }
-  .contact-item, .contact-card { /* Email/WhatsApp/Location divs */
+  /* Individual contact items full width, equal height */
+  [class*="contact-item"], [class*="card"], div > div:has([class*="touch"]) {
+    flex: 1 1 auto !important;
     width: 100% !important;
-    margin-bottom: 10px !important;
+    min-height: 80px !important;
+    padding: 10px !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
   }
-  .connect-buttons { /* Connect/LinkedIn/GitHub buttons */
+  /* Buttons stack center */
+  .connect-buttons, [class*="connect"], .btn-group {
     flex-direction: column !important;
-    align-items: center;
-  }
-  .connect-buttons button, .connect-buttons a {
     width: 100% !important;
-    max-width: 250px;
-    margin: 5px 0;
+    align-items: center !important;
+    gap: 8px !important;
   }
-  /* Hero buttons fix */
-  .hero-buttons {
+  /* Hero & projects buttons */
+  .hero-buttons, .project-buttons {
     flex-direction: column !important;
+    width: 100% !important;
   }
-  .view-projects, .download-resume {
-    width: 100%;
+  .view-projects, .download-resume, button, a[href*="connect"] {
+    width: 100% !important;
+    max-width: 280px !important;
   }
 }
   </style>
