@@ -522,6 +522,32 @@ footer {
   display: inline-block;
   margin-top: 0.25rem;
 }
+/* CONTACT MOBILE FIX - Paste here */
+@media (max-width: 768px) {
+  .get-in-touch, .contact-container { /* Match your contact class */
+    flex-direction: column !important;
+    padding: 15px;
+  }
+  .contact-item, .contact-card { /* Email/WhatsApp/Location divs */
+    width: 100% !important;
+    margin-bottom: 10px !important;
+  }
+  .connect-buttons { /* Connect/LinkedIn/GitHub buttons */
+    flex-direction: column !important;
+    align-items: center;
+  }
+  .connect-buttons button, .connect-buttons a {
+    width: 100% !important;
+    max-width: 250px;
+    margin: 5px 0;
+  }
+  /* Hero buttons fix */
+  .hero-buttons {
+    flex-direction: column !important;
+  }
+  .view-projects, .download-resume {
+    width: 100%;
+  }
 }
   </style>
 </head>
