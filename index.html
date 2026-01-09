@@ -661,7 +661,11 @@
       <div class="footer-section">
         <h3><i class="fas fa-map-marker-alt"></i> Location</h3>
         <p>Govindpuram, Ghaziabad, India</p>
-        <br><br> 
+        .footer-content div:nth-child(3)::before {
+         content: "";
+         display: block;
+         height: 0.8em;
+        }
 
       </div>
       <div class="footer-section">
@@ -708,6 +712,7 @@
   </script>
 </body>
 </html>
+
 
 
 
