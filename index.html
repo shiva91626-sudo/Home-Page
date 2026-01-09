@@ -444,144 +444,11 @@ footer .copyright {
         grid-template-columns: 1fr;
         gap: 1.5rem;
       }
+      .footer-content { align-items: stretch; }
+.footer-content > div { height: 90px; display: flex; align-items: center; }
+.footer-content > div { background: rgba(255,255,255,0.1); }
+
     }
-    /* ⬇️⬇️⬇️ PASTE NEW MOBILE POLISH HERE ⬇️⬇️⬇️ */
-    @media (max-width: 768px) {
-
-  /* HEADER */
-  .logo {
-    font-size: 1.2rem;
-    line-height: 1.2;
-  }
-
-  nav a {
-    font-size: 0.9rem;
-    margin-left: 0.75rem;
-  }
-
-  /* HERO */
-  .hero {
-    padding: 4rem 1.5rem;
-  }
-
-  .hero h1 {
-    font-size: 2.2rem;
-    line-height: 1.25;
-  }
-
-  .hero-subtitle {
-    font-size: 1rem;
-  }
-
-  /* PROJECT CARDS */
-  .project-card {
-    padding: 1.75rem;
-  }
-
-  .project-card p {
-    font-size: 0.95rem;
-  }
-
-  /* SECTIONS */
-  section {
-    padding: 4rem 0;
-  }
-
-  /* MOBILE FOOTER – FINAL FIX */
-footer {
-  padding: 1rem;
-}
-
-.footer-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 1.2rem;
-  background: #0f5f57;
-  border-radius: 16px;
-}
-
-.footer-section {
-  margin: 0;
-  padding: 0;
-  text-align: left;
-}
-
-.footer-section h3 {
-  font-size: 0.95rem;
-  margin-bottom: 0.25rem;
-}
-
-.footer-section p,
-.footer-section a {
-  font-size: 0.9rem;
-  line-height: 1.4;
-}
-
-.footer-section a {
-  display: inline-block;
-  margin-top: 0.25rem;
-}
-/* CONTACT MOBILE FIX - Paste here */
-@media (max-width: 768px) {
-  /* Force contact container to column, equal heights */
-  .get-in-touch, [class*="contact"], .footer-content, .contact-section {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    padding: 15px !important;
-    gap: 10px !important;
-  }
-  /* Individual contact items full width, equal height */
-  [class*="contact-item"], [class*="card"], div > div:has([class*="touch"]) {
-    flex: 1 1 auto !important;
-    width: 100% !important;
-    min-height: 80px !important;
-    padding: 10px !important;
-    margin: 0 !important;
-    box-sizing: border-box !important;
-  }
-  /* Buttons stack center */
-  .connect-buttons, [class*="connect"], .btn-group {
-    flex-direction: column !important;
-    width: 100% !important;
-    align-items: center !important;
-    gap: 8px !important;
-  }
-  /* Hero & projects buttons */
-  .hero-buttons, .project-buttons {
-    flex-direction: column !important;
-    width: 100% !important;
-  }
-  .view-projects, .download-resume, button, a[href*="connect"] {
-    width: 100% !important;
-    max-width: 280px !important;
-  }
-@media (max-width: 768px) {
-  /* Fine-tune heights & padding */
-  [class*="contact"] > div { /* Contact child divs */
-    min-height: 90px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    padding: 12px !important;
-  }
-  .connect-buttons button, .connect-buttons a {
-    padding: 12px 20px !important;
-    font-size: 16px !important;
-  }
-  @media (max-width: 768px) {
-  .footer-content > div:not(.footer-section):not(.copyright) {
-    min-height: 85px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    padding: 12px !important;
-    margin-bottom: 8px !important;
-    border-radius: 8px !important;
-    background: rgba(255,255,255,0.1) !important;
-  }
-}
   </style>
 </head>
 
@@ -796,6 +663,7 @@ for data-driven HR decision-making.
   </script>
 </body>
 </html>
+
 
 
 
